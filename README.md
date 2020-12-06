@@ -40,17 +40,7 @@ The overall approach is discussed below:
 After exploring various models, **XGBoost** (eXtreme Gradient Boosting) which is an ensemble model, was chosen.
 
 ### Hyperparameter optimization
-Out of several parameters for the XGBoost model, the following parameters were chosen for a randomized search along with a 5-fold cross validation:
-* `learning_rate`
-* `n_estimators`
-* `subsample`
-* `max_depth`
-* `alpha`
-* `lambda`
-* `gamma`
-* `min_child_weight`
-
-After hyperparameter search, the best model is saved and then used for predicting the probabilities of the test set entries.
+Out of several parameters for the XGBoost model, the following parameters were chosen for a randomized search along with a 5-fold cross validation: `learning_rate`, `n_estimators`, `subsample`, `max_depth`, `alpha`, `lambda`, `gamma` and `min_child_weight`. After hyperparameter search, the best model is saved and then used for predicting the probabilities of the test set entries.
 
 ## Results
 * Best cross-validation AUC score on the training set: **0.871**
