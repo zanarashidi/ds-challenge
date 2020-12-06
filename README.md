@@ -49,6 +49,7 @@ Out of several parameters for the XGBoost model, the following parameters were c
 * `lambda`
 * `gamma`
 * `min_child_weight`
+
 After hyperparameter search, the best model is saved and then used for predicting the probabilities of the test set entries.
 
 ## Results
