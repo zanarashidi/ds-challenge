@@ -37,7 +37,7 @@ The overall approach is discussed below:
 2. Missing values for the test set were filled with the same approach.
 
 ### Model selection 
-After exploring various models, XGBoost (eXtreme Gradient Boosting) which is an ensemble model, was chosen.
+After exploring various models, **XGBoost** (eXtreme Gradient Boosting) which is an ensemble model, was chosen.
 
 ### Hyperparameter optimization
 Out of several parameters for the XGBoost model, the following parameters were chosen for a randomized search along with a 5-fold cross validation:
