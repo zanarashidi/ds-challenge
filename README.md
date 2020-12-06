@@ -6,7 +6,7 @@
 * `eda.py`: Exploratory data analysis done on the dataset.
 * `xgboost_model.p`: Best trained model.
 * `xgboost_results.csv`: Results on the test set based on the best trained model.
-* `dsc.yml`:Environment file.
+* `dsc.yml`: Environment file.
 * `data`: Dataset.
 
 ## How to run
@@ -26,13 +26,13 @@ python code.py
 ## Approach
 The overall approach is discussed below:
 
-### Data Preprocessing
+### Data preprocessing
 1. An exploratory data analysis was conducted (`eda.py`). As a result, the following modifications were applied to the training set:
-* The entries for which `RevolvingUtilizationOfUnsecuredLines` was larger than 10, were dropped.
-* The entries for which `DebtRatio` was larger than 3489.025, were dropped.
-* The entries for which `NumberOfTimes90DaysLate` was larger than 17, were dropped.
-* Missing values for `MonthlyIncome` were filled with the median.
-* Missing values for `NumberOfDependents` were filled with mode.
+..* The entries for which `RevolvingUtilizationOfUnsecuredLines` was larger than 10, were dropped.
+..* The entries for which `DebtRatio` was larger than 3489.025, were dropped.
+..* The entries for which `NumberOfTimes90DaysLate` was larger than 17, were dropped.
+..* Missing values for `MonthlyIncome` were filled with the median.
+..* Missing values for `NumberOfDependents` were filled with mode.
 
 2. Missing values for the test set were filled with the same approach.
 
