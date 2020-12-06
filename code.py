@@ -18,9 +18,9 @@ def prepare_data(path, mode):
 	df['NumberOfDependents'] = df['NumberOfDependents'].fillna(0) # fill ND missing values with mode
 	return df
 
-def hyperparametr_search(dataset, model, target):
+def hyperparameter_search(dataset, model, target):
 	features, label = dataset.drop([target], axis=1), dataset[target]
-	params = {
+	params = { #parameters to search for
 		'learning_rate': [0.001, 0.002, 0.004, 0.006, 0.008, 0.01, 0.05, 0.1],
 		'n_estimators': range(50, 750, 50),
 		'subsample': [0.5, 0.6, 0.7, 0.8, 0.9, 1],
@@ -30,27 +30,27 @@ def hyperparametr_search(dataset, model, target):
 		'gamma': [0, 0.1, 0.2, 0.3, 0.4, 0.5],
 		'min_child_weight': [0, 1, 4, 7, 10]
 		}
-	cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=0)
+	cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=0) #stratified cross validation
 	return RandomizedSearchCV(model, param_distributions=params, n_iter=100, scoring='roc_auc', n_jobs=-1, cv=cv, verbose=3, random_state=0)
 
 def train(dataset, model, target):
 	features, label = dataset.drop([target], axis=1), dataset[target]
-	model.fit(features, label, eval_metric='auc')
+	model.fit(features, label, eval_metric='auc') #fit model
 	return model
 
 def test(dataset, model, target):
 	features, label = dataset.drop([target], axis=1), dataset[target]
-	return model.predict_proba(features)
+	return model.predict_proba(features) #predict probabilities
 
 def save_csv(dataset, result, fname):
 	df = pd.DataFrame({"Id": dataset["Unnamed: 0"], "Probability": result})
 	df["Id"] = df["Id"].astype(int)
 	df["Probability"] = df["Probability"].astype(float)
-	df.to_csv(fname, index=False) #save results
+	df.to_csv(fname, index=False) #save results to csv
 
 def main():
 	parser = argparse.ArgumentParser()
-	parser.add_argument('--hps', type=bool, default=False, help='whether to do hyperparameter search or not')
+	parser.add_argument('--hps', action='store_true', help='whether to do hyperparameter search or not')
 	args = parser.parse_args()
 
 	alg_name = 'xgboost'
@@ -63,7 +63,7 @@ def main():
 	if args.hps == True:
 		print('Hyperparameter search... ')
 		df_train = prepare_data(path=training_path, mode='train') #prepare training dataset
-		model = hyperparametr_search(dataset=df_train, model=alg, target=target) #cross validation
+		model = hyperparameter_search(dataset=df_train, model=alg, target=target) #cross validation
 
 		print('Training... ')
 		trained_model = train(dataset=df_train, model=model, target=target) #fit model

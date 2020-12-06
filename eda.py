@@ -10,16 +10,16 @@ def data_analysis(path):
 
 	print(df['SeriousDlqin2yrs'].describe()) # target, skewed towards 0
 	sns.countplot(x="SeriousDlqin2yrs", data=df)
-	# plt.show()
+	plt.show()
 
 	print(df['RevolvingUtilizationOfUnsecuredLines'].describe()) # instances with ratios above 10 don't have normal defaults
 	sns.displot(df["RevolvingUtilizationOfUnsecuredLines"])
-	# plt.show()
+	plt.show()
 	print(df[df['RevolvingUtilizationOfUnsecuredLines'] > 10].SeriousDlqin2yrs.describe())
 
 	print(df['age'].describe()) 
 	sns.displot(df["age"])
-	# plt.show()
+	plt.show()
 
 	print(df['NumberOfTime30-59DaysPastDueNotWorse'].describe())
 	print(df['NumberOfTime60-89DaysPastDueNotWorse'].describe())
@@ -35,11 +35,11 @@ def data_analysis(path):
 
 	print(df['NumberOfOpenCreditLinesAndLoans'].describe())
 	sns.displot(df["NumberOfOpenCreditLinesAndLoans"])
-	# plt.show()
+	plt.show()
 
 	print(df['NumberRealEstateLoansOrLines'].describe())
 	sns.displot(df["NumberOfOpenCreditLinesAndLoans"])
-	# plt.show()
+	plt.show()
 
 	print(df['NumberOfDependents'].describe()) # missing values, replace with mode (which is 0)
 	print(df["NumberOfDependents"].value_counts())
@@ -47,7 +47,7 @@ def data_analysis(path):
 	return
 
 def main():
-	training_path = 'GiveMeSomeCredit/cs-training.csv'
+	training_path = 'data/cs-training.csv'
 	data_analysis(path=training_path)
 
 if __name__ == '__main__':
