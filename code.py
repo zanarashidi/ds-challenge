@@ -26,7 +26,7 @@ def hyperparametr_search(dataset, model, target):
 		'subsample': [0.5, 0.6, 0.7, 0.8, 0.9, 1],
 		'max_depth': range(3, 10, 1)
 		}
-	cv = StratifiedKFold(n_splits=5, shuffle = True, random_state = 0)
+	cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=0)
 	return RandomizedSearchCV(model, param_distributions=params, n_iter=100, scoring='roc_auc', n_jobs=-1, cv=cv, verbose=3, random_state=0)
 
 def train(dataset, model, target):
