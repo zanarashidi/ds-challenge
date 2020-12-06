@@ -50,7 +50,7 @@ def save_csv(dataset, result, fname):
 
 def main():
 	parser = argparse.ArgumentParser()
-	parser.add_argument('--hps', action='store_true', help='whether to do hyperparameter search or not')
+	parser.add_argument('-hps', action='store_true', help='whether to do hyperparameter search or not')
 	args = parser.parse_args()
 
 	alg_name = 'xgboost'
