@@ -4,8 +4,8 @@ import joblib
 import argparse
 
 from sklearn.model_selection import cross_validate
-from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.model_selection import StratifiedKFold, RandomizedSearchCV
+from xgboost import XGBClassifier
 
 
 def prepare_data(path, mode):
@@ -21,17 +21,21 @@ def prepare_data(path, mode):
 def hyperparametr_search(dataset, model, target):
 	features, label = dataset.drop([target], axis=1), dataset[target]
 	params = {
-		'learning_rate': [0.001, 0.002, 0.005, 0.01, 0.02, 0.05, 0.1],
+		'learning_rate': [0.001, 0.002, 0.004, 0.006, 0.008, 0.01, 0.05, 0.1],
 		'n_estimators': range(50, 750, 50),
 		'subsample': [0.5, 0.6, 0.7, 0.8, 0.9, 1],
-		'max_depth': range(3, 10, 1)
+		'max_depth': range(5, 10, 1),
+		'alpha': [0, 0.001, 0.005, 0.01, 0.05, 0.1],
+        'lambda': [0, 0.01, 0.05, 0.1, 0.5, 1],
+        'gamma': [0, 0.1, 0.2, 0.3, 0.4, 0.5],
+        'min_child_weight': [0, 1, 4, 7, 10]
 		}
 	cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=0)
 	return RandomizedSearchCV(model, param_distributions=params, n_iter=100, scoring='roc_auc', n_jobs=-1, cv=cv, verbose=3, random_state=0)
 
 def train(dataset, model, target):
 	features, label = dataset.drop([target], axis=1), dataset[target]
-	model.fit(features, label)
+	model.fit(features, label, eval_metric='auc')
 	return model
 
 def test(dataset, model, target):
@@ -50,8 +54,8 @@ def main():
 	parser.add_argument('--hps', type=bool, default=False, help='whether to do hyperparameter search or not')
 	args = parser.parse_args()
 
-	alg_name = 'gradient_boosting'
-	alg = GradientBoostingClassifier(random_state=0) # ada boost
+	alg_name = 'xgboost'
+	alg = XGBClassifier(random_state=0) # xgboost
 
 	training_path = 'data/cs-training.csv'
 	testing_path = 'data/cs-test.csv'
