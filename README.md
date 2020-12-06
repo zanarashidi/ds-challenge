@@ -5,7 +5,9 @@
 * `code.py`: Main script implementing data preparation, hyperparameter search, training and testing.
 * `eda.py`: Exploratory data analysis done on the dataset.
 * `xgboost_model.p`: Best trained model.
-* `xgboost_results.csv`: Results on the test set.
+* `xgboost_results.csv`: Results on the test set based on the best trained model.
+* `dsc.yml`:Environment file.
+* `data`: Dataset.
 
 ## How to run
 1. Create an anaconda environment using the *yml* file included in the repository:
@@ -18,5 +20,5 @@ conda activate dsc
 ```
 2. Run code (if hyperparameter search is desired, pass the `-hps` argument):
 ```Bash
-python code.py 
+python code.py (-hps)
 ```
