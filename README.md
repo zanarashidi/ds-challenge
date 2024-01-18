@@ -1,7 +1,7 @@
 # Give Me Some Credit (Kaggle challenge)
 
 ## About
-This repository contains a solution to the credit scoring [Kaggle challenge](https://www.kaggle.com/c/GiveMeSomeCredit/overview){:target="_blank"} by predicting the probability that somebody will experience financial distress in the next two years.
+This repository contains a solution to the credit scoring [Kaggle challenge](https://www.kaggle.com/c/GiveMeSomeCredit/overview) by predicting the probability that somebody will experience financial distress in the next two years.
 
 ## Contents
 
