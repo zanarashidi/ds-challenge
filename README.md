@@ -7,16 +7,16 @@ This repository contains a solution to the credit scoring [Kaggle challenge](htt
 
 * `code.py`: Main script implementing data preparation, hyperparameter search, training and testing.
 * `eda.py`: Exploratory data analysis done on the dataset.
-* `dsc.yml`: Environment file.
+* `env.yml`: Environment file.
 
 ## How to run
 1. Create an anaconda environment using the *yml* file included in the repository:
 ```Bash
-$ conda create -f dsc.yml
+$ conda create -f env.yml
 ```
 2. Activate environment: 
 ```Bash
-$ conda activate dsc
+$ conda activate env
 ```
 3. Upload training and test data in the data folder: 
 ```Bash
