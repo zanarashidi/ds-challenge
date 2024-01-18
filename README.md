@@ -1,26 +1,30 @@
-# DS Challenge
+# Give Me Some Credit (Kaggle challenge)
+
+## About
+This repository contains a solution to the credit scoring [Kaggle challenge](https://www.kaggle.com/c/GiveMeSomeCredit/overview){:target="_blank"} by predicting the probability that somebody will experience financial distress in the next two years.
 
 ## Contents
 
 * `code.py`: Main script implementing data preparation, hyperparameter search, training and testing.
 * `eda.py`: Exploratory data analysis done on the dataset.
-* `xgboost_model.p`: Best trained model.
-* `xgboost_results.csv`: Results on the test set based on the best trained model.
 * `dsc.yml`: Environment file.
-* `data`: Dataset.
 
 ## How to run
 1. Create an anaconda environment using the *yml* file included in the repository:
 ```Bash
-conda create -f dsc.yml
+$ conda create -f dsc.yml
 ```
 2. Activate environment: 
 ```Bash
-conda activate dsc
+$ conda activate dsc
 ```
-2. Run code (if hyperparameter search is desired, pass the `-hps` argument):
+3. Upload training and test data in the data folder: 
 ```Bash
-python code.py
+$ data
+```
+4. Run code (if hyperparameter search is desired, pass the `-hps` argument):
+```Bash
+$ python code.py
 ```
 
 ## Approach
